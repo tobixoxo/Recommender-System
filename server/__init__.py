@@ -23,6 +23,7 @@ def view_db_route():
     return render_template('view_db.html', **{
         'movies' : Movie.query.all(),
         'genres' : Genre.query.all(),
-        'movie_genre' : Movie_Genre.query.all()
+        'movie_genre' : Movie_Genre.query.all(),
+        'ratings' : UserRatings.query.all(),
     })
     

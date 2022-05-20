@@ -7,6 +7,7 @@
     <title>View DataBase</title>
 </head>
 <body>
+    
     <h1>Movies</h1>
     <table>
         <tr>
@@ -49,6 +50,25 @@
             <td>{{mg.id}}</td>
             <td>{{mg.movie_id}}</td>
             <td>{{mg.genre_id}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+   
+
+    <h1>User Ratings</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>user_id</th>
+            <th>movie_id</th>
+            <th>rating</th>
+        </tr>
+        {% for r in ratings if count != 10 %}
+        <tr>
+            <td>{{r.id}}</td>
+            <td>{{r.user_id}}</td>
+            <td>{{r.movie_id}}</td>
+            <td>{{r.rating}}</td>
         </tr>
         {% endfor %}
     </table>

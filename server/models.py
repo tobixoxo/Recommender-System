@@ -1,6 +1,6 @@
+from enum import unique
 from turtle import title
 from server import db
-
 
 class Movie(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -17,3 +17,9 @@ class Movie_Genre(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     movie_id = db.Column(db.Integer, db.ForeignKey("movie.id"), primary_key = True)
     genre_id = db.Column(db.Integer, db.ForeignKey("genre.id"), primary_key = True )
+    
+class UserRatings(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    movie_id = db.Column(db.Integer, nullable = False)
+    user_id = db.Column(db.Integer, nullable = False)
+    rating = db.Column(db.Integer, nullable = False)
