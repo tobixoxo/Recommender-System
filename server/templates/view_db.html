@@ -13,14 +13,12 @@
             <th>id</th>
             <th>Title</th>
             <th>Release Year</th>
-            <th>description</th>
         </tr>
         {% for movie in movies %}
         <tr>
             <td>{{movie.id}}</td>
             <td>{{movie.title}}</td>
-            <td>{{movie.publishing_year}}</td>
-            <td>{{movie.description}}</td>
+            <td>{{movie.year}}</td>
         </tr>
         {% endfor %}
     </table>
@@ -30,13 +28,11 @@
         <tr>
             <th>id</th>
             <th>name</th>
-            <th>description</th>
         </tr>
         {% for genre in genres %}
         <tr>
             <td>{{genre.id}}</td>
             <td>{{genre.name}}</td>
-            <td>{{genre.description}}</td>
         </tr>
         {% endfor %}
     </table>

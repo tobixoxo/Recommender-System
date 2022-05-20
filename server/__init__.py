@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 from server.models import *
 db.create_all()
 
-from server import dummy_data
+from server import create_data
 
 @app.route('/')
 def index_route():

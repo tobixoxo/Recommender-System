@@ -11,21 +11,21 @@ db.session.add(Movie(** {
     'id' : 1,
     'title' : 'Toy Story',
     'description' : 'toys coming alive',
-    'publishing_year' : 1998,
+    'year' : 1998,
 }))
 
 db.session.add(Movie(** {
     'id' : 2,
     'title' : '50 shades of grey',
     'description' : 'billionaire bdsm enthusiast',
-    'publishing_year' : 2012,
+    'year' : 2012,
 }))
 
 db.session.add(Movie(** {
     'id' : 3,
     'title' : 'krishh',
     'description' : 'indian supe',
-    'publishing_year' : 2007,
+    'year' : 2007,
 }))
 
 db.session.add(Genre(** {
