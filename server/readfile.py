@@ -24,12 +24,12 @@ def make_rating_record(row):
     rating['rating'] = int(float(row[2]))
     return rating
 
-def read_csv():
+def read_csv(movies_filename, ratings_filename):
     movie_record = []
     #genre record will be a set
     genre_record = set()
 
-    with open('server/movies.csv', encoding='utf8') as file:
+    with open(movies_filename, encoding='utf8') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             movie_record.append(make_movie_record(row))
@@ -37,7 +37,7 @@ def read_csv():
             for g in genre_row:
                 genre_record.add(g)
     rating_record = []
-    with open('server/ratings.csv', encoding = 'utf8') as file:
+    with open(ratings_filename, encoding = 'utf8') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             rating_record.append(make_rating_record(row))
@@ -48,26 +48,24 @@ def read_csv():
 def get_dicts(movies, genres, ratings):
     all_genres = []
     all_movies = []
-    all_movie_genres = []
+    all_MovieGenres = []
     all_ratings = []
     genres_dict = {}
     for index, genre in enumerate(genres):
         genres_dict[genre] = index + 1
         all_genres.append({'id': index + 1, 'title': genre})
 
-    c = 1
     for index, movie in enumerate(movies):
         all_movies.append({'id': index + 1, 'title': movie['title'], 'year': movie['year']})
         for genre in movie['genres']:
-            all_movie_genres.append({'id': c, 'movie_id': index + 1, 'genre_id': genres_dict[genre]})
-            c += 1
+            all_MovieGenres.append({ 'movie_id': index + 1, 'genre_id': genres_dict[genre]})
     for index, rating in enumerate(ratings):
         rating['id'] = index + 1
         all_ratings.append(rating)
-    return all_movies, all_genres, all_movie_genres, all_ratings
+    return all_movies, all_genres, all_MovieGenres, all_ratings
 
-def get_csv_data():
-    movies, genres, ratings = read_csv()
+def get_csv_data(movies_filename, ratings_filename):
+    movies, genres, ratings = read_csv(movies_filename, ratings_filename)
     return get_dicts(movies, genres, ratings)
 
 

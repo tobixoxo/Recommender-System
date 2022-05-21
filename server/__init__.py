@@ -14,6 +14,8 @@ db.create_all()
 
 from server import create_data
 
+create_data.create_data('server/datasets/dummy_movies.csv','server/datasets/dummy_ratings.csv')
+
 @app.route('/')
 def index_route():
     return "<a href='/view_db' > view the database </a>"
@@ -23,7 +25,8 @@ def view_db_route():
     return render_template('view_db.html', **{
         'movies' : Movie.query.all(),
         'genres' : Genre.query.all(),
-        'movie_genre' : Movie_Genre.query.all(),
+        # 'MovieGenre' : MovieGenre.query.all(),
         'ratings' : UserRatings.query.all(),
     })
     
+# import server.query_data

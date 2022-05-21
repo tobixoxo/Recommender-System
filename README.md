@@ -4,7 +4,9 @@ I will be using flask to handle backend etc
 
 - [x] import csv to model
 - [x] render it to frontend
-- [x] added actual data
+- [x] added movies data
+- [x] added ratings data
+- [ ] 
 
 camelCase, snake_case, PascalCase, SCREAMING_SNAKE_CASE, Kabab-case
 
@@ -16,3 +18,7 @@ camelCase, snake_case, PascalCase, SCREAMING_SNAKE_CASE, Kabab-case
 | Constants | `SCREAMING_SNAKE_CASE` |
 | Variables | `snake_case` |
 | Modules | `snake_case` |
+| function | `snake_case` |
+
+## Database Schema
+![](/server/database_schema.svg)

@@ -14,45 +14,53 @@
             <th>id</th>
             <th>Title</th>
             <th>Release Year</th>
+            <th>Genres</th>
         </tr>
         {% for movie in movies %}
         <tr>
             <td>{{movie.id}}</td>
             <td>{{movie.title}}</td>
             <td>{{movie.year}}</td>
+            <td>
+                {% for genre in movie.genres %}
+                <span>
+                    {{ genre.title }}
+                    {% if not loop.last %}
+                        {{", "}}
+                    {% endif %}
+                </span>
+                {% endfor %}
+            </td>
         </tr>
         {% endfor %}
     </table>
 
-    <h1>Genres</h1>
+    <h1>Genres Available</h1>
     <table>
         <tr>
             <th>id</th>
             <th>name</th>
+            <th>Available movies</th>
         </tr>
         {% for genre in genres %}
         <tr>
             <td>{{genre.id}}</td>
-            <td>{{genre.name}}</td>
+            <td>{{genre.title}}</td>
+            <td>
+                {% for movie in genre.movies %}
+                <span>
+                    {{ movie.title }}
+                    {% if not loop.last %}
+                        {{", "}}
+                    {% endif %}
+                </span>
+                {% endfor %}
+            </td>
         </tr>
         {% endfor %}
     </table>
 
-    <h1>Content Genre</h1>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>movie id</th>
-            <th>genre id</th>
-        </tr>
-        {% for mg in movie_genre %}
-        <tr>
-            <td>{{mg.id}}</td>
-            <td>{{mg.movie_id}}</td>
-            <td>{{mg.genre_id}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    
    
 
     <h1>User Ratings</h1>
