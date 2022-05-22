@@ -57,6 +57,6 @@ class Playlist(db.Model):
     description = db.Column(db.Text, unique = False, nullable = True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key = True)
 
-#----------------------------------
+#----------------------------------------------------
 def watch_history_for_user( uid):
         return [(Movie.query.filter(Movie.id == watched_movies.movie_id).first().title,watched_movies.rating) for watched_movies in UserRatings.query.filter( UserRatings.user_id == uid )]

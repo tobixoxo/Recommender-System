@@ -4,9 +4,6 @@ from server.models import Movie, UserRatings
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-ratings = pd.read_csv("server/datasets/dummy_ratings.csv", index_col = 0)
-
-
 #---------------------------------------------------------------------------------
 ratings = pd.read_csv("server/datasets/toydataset.csv",index_col= 0)
 ratings = ratings.fillna(0)
