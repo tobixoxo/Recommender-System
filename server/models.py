@@ -24,7 +24,7 @@ class UserRatings(db.Model):
         return f"user {self.user_id} gave {self.rating} to {self.movie_id}"
     
     def make_list(self):
-        return [self.id, self.movie_id, self.user_id, self.rating]
+        return [self.user_id, Movie.query.filter(Movie.id== self.movie_id).first().title,  self.rating]
         
 class Movie(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -56,3 +56,7 @@ class Playlist(db.Model):
     title = db.Column(db.String, unique=False, nullable=False)
     description = db.Column(db.Text, unique = False, nullable = True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key = True)
+
+#----------------------------------
+def watch_history_for_user( uid):
+        return [(Movie.query.filter(Movie.id == watched_movies.movie_id).first().title,watched_movies.rating) for watched_movies in UserRatings.query.filter( UserRatings.user_id == uid )]

@@ -29,4 +29,4 @@ def view_db_route():
         'ratings' : UserRatings.query.all(),
     })
     
-# import server.query_data
+import server.query_data
