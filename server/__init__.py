@@ -14,7 +14,7 @@ db.create_all()
 
 from server import create_data
 
-create_data.create_data('server/datasets/dummy_movies.csv','server/datasets/dummy_ratings.csv')
+create_data.create_data('server/datasets/movies.csv','server/datasets/ratings.csv')
 
 @app.route('/')
 def index_route():

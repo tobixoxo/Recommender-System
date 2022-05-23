@@ -22,7 +22,6 @@ class UserRatings(db.Model):
     rating = db.Column(db.Integer, nullable = False)
     def __str__(self):
         return f"user {self.user_id} gave {self.rating} to {self.movie_id}"
-    
     def make_list(self):
         return [self.user_id, Movie.query.filter(Movie.id== self.movie_id).first().title,  self.rating]
         
