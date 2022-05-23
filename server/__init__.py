@@ -16,12 +16,12 @@ db = SQLAlchemy(app)
 from server.models import *
 db.create_all()
 
-from server import create_data
+import create_data
 
 create_data.create_data(
-    'server/datasets/dummy_movies.csv',
-    'server/datasets/dummy_ratings.csv',
-    'server/datasets/dummy_users.csv'
+    'dummy_movies.csv',
+    'dummy_ratings.csv',
+    'dummy_users.csv'
 )
 
 import server.routes

@@ -21,7 +21,7 @@ camelCase, snake_case, PascalCase, SCREAMING_SNAKE_CASE, Kabab-case
 | function | `snake_case` |
 
 ## Database Schema
-![](/server/database_schema.svg)
+![](/server/database_schema/database_schema.svg)
 
 ## Dataset Format
 - dummyratings = user_id, movie_id, rating(1-5), timestamp

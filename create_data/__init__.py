@@ -1,18 +1,13 @@
+from create_data import get_user_csv_data, get_movies_csv_data, get_ratings_csv_data
+
 from server import db
 from server.models import *
 
-# Movie.query.delete()
-# Genre.query.delete()
-# MovieGenre.query.delete()
-# UserRatings.query.delete()
-# db.session.commit()
-
-
-from server.readfile import get_csv_data, get_user_csv_data
-
 def create_data(movies_filename, ratings_filename, users_filename):
-    movies, genres, MovieGenres, ratings = get_csv_data(movies_filename, ratings_filename)
-    users = get_user_csv_data(users_filename)
+    link = "create_data/datasets/"
+    movies, genres, MovieGenres = get_movies_csv_data.get_movies_csv_data(link + movies_filename)
+    ratings = get_ratings_csv_data.get_ratings_csv_data(link + ratings_filename)
+    users = get_user_csv_data.get_user_csv_data(link + users_filename)
     
     for user in users:
         db.session.add(User(**user))

@@ -20,7 +20,7 @@ def view_db_route():
         'ratings' : UserRatings.query.all(),
     })
 
-from server.collaborative_filtering import make_recommendations
+from collaborative_filtering.collaborative_filtering import make_recommendations
 
 @app.route('/recommend_movies/<int:user_id>')
 def recommend_movies_route(user_id):
