@@ -18,11 +18,11 @@ db.create_all()
 
 import create_data
 
-create_data.create_data(
-    'dummy_movies.csv',
-    'dummy_ratings.csv',
-    'dummy_users.csv'
-)
+# create_data.create_data(
+#     'movies.csv',
+#     'ratings.csv',
+#     'dummy_users.csv'
+# )
 
 import server.routes
 

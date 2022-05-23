@@ -23,13 +23,12 @@ class UserRatings(db.Model):
     rating = db.Column(db.Integer, nullable = False)
     def __str__(self):
         return f"user {self.user_id} gave {self.rating} to {self.movie_id}"
-    def make_list(self):
-        return [self.user_id, Movie.query.filter(Movie.id== self.movie_id).first().title,  self.rating]
+    
         
 class Movie(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String, unique=False, nullable=False)
-    year = db.Column(db.Integer, unique = False, nullable = False)
+    year = db.Column(db.Integer, unique = False, nullable = True)
     description = db.Column(db.Text, unique = False, nullable = True)
     genres = db.relationship("Genre",secondary = MovieGenre, backref = "movies", lazy = True)
     # ratings = db.relationship("UserRating", backref = "movie", lazy = True)
@@ -58,5 +57,4 @@ class Playlist(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key = True)
 
 #----------------------------------------------------
-def watch_history_for_user( uid):
-        return [(Movie.query.filter(Movie.id == watched_movies.movie_id).first().title,watched_movies.rating) for watched_movies in UserRatings.query.filter( UserRatings.user_id == uid )]
+
