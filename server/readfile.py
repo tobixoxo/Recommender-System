@@ -1,8 +1,10 @@
 #what to do
 
 import csv
+from fileinput import filename
 import re
 from pprint import pprint
+from datetime import date
 
 def movie_name_without_year(name):
     return re.sub('\(\d{4}\)', "", name).strip()
@@ -68,5 +70,16 @@ def get_csv_data(movies_filename, ratings_filename):
     movies, genres, ratings = read_csv(movies_filename, ratings_filename)
     return get_dicts(movies, genres, ratings)
 
-
-
+def get_user_csv_data(user_filename):
+    with open(user_filename, encoding='utf8') as file:
+        csvreader = csv.reader(file)
+        return [{
+            'id':index + 1,
+            'name':row[1],
+            'nickname':row[2],
+            'email':row[3],
+            'password':row[4],
+            'dob':date.fromisoformat(row[5])
+        }
+        for index,row in enumerate(csvreader)]
+        

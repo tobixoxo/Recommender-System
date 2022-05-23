@@ -2,6 +2,7 @@ from collections import UserList
 from enum import unique
 from turtle import title
 from server import db
+from flask_login import UserMixin
 
 
 
@@ -38,7 +39,7 @@ class Genre(db.Model):
     title = db.Column(db.String, unique=False, nullable=False)
     description = db.Column(db.Text, unique = False, nullable = True)
     
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     #name fix : not nullable
     name = db.Column(db.String, unique = False, nullable = True)

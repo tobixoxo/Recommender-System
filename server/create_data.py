@@ -8,10 +8,15 @@ from server.models import *
 # db.session.commit()
 
 
-from server.readfile import get_csv_data
+from server.readfile import get_csv_data, get_user_csv_data
 
-def create_data(movies_filename, ratings_filename):
+def create_data(movies_filename, ratings_filename, users_filename):
     movies, genres, MovieGenres, ratings = get_csv_data(movies_filename, ratings_filename)
+    users = get_user_csv_data(users_filename)
+    
+    for user in users:
+        db.session.add(User(**user))
+
     for movie in movies:
         db.session.add(Movie(**movie))
 
