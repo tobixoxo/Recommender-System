@@ -10,6 +10,9 @@ def index_route():
 
     return "<a href='/view_db' > view the database </a><br> " + links
 
+@app.route('/home')
+def home_route():
+    return render_template('home.html')
 
 @app.route('/view_db')
 def view_db_route():
