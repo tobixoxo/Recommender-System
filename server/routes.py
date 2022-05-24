@@ -4,15 +4,15 @@ from flask import render_template
 
 @app.route('/')
 def index_route():
+    return render_template('index.html')
+
+@app.route('/home')
+def home_route():
     links = ""
     for i in range(1,11):
         links += f"<a href = '/recommend_movies/{i}' > recommendations for user {i} </a><br>"
     home = "<a href='/home' > home Page </a><br>"
     return home + "<a href='/view_db' > view the database </a><br> " + links
-
-@app.route('/home')
-def home_route():
-    return render_template('home.html')
 
 @app.route('/view_db')
 def view_db_route():

@@ -25,3 +25,6 @@ camelCase, snake_case, PascalCase, SCREAMING_SNAKE_CASE, Kabab-case
 
 ## Dataset Format
 - dummyratings = user_id, movie_id, rating(1-5), timestamp
+
+## Color Scheme
+[Color Theme](https://visme.co/blog/wp-content/uploads/2016/09/website6.jpg)
