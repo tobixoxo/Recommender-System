@@ -38,6 +38,10 @@ nav{
 .navbar-logo{
     padding: 10px;
     fill: var(--orange-dark);
+    transition: transform .2s ;
+}
+.navbar-logo:hover{
+    transform: rotate(-9deg);
 }
 .navbar-title{
     display: flex;
@@ -75,6 +79,13 @@ footer{
     /* outline:2px red solid */
     height: var(--footer-height);
     background-color: var(--orange-dark);
-    
 }
+
+a:link {
+    color: var(--orange-light);
+}
+a:visited {
+    color: var(--green-light);
+}
+
 
