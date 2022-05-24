@@ -31,3 +31,11 @@ def recommend_movies_route(user_id):
     return render_template('recommend_movies.html', **{
         'movs' : movs
     })
+
+@app.route('/search_movies')
+def search_movies_route():
+    return "<h1> Search Movies Here! </h1>"
+
+@app.route('/login_form')
+def login_form_route():
+    return "<h1>Login Form Here!</h1>"
