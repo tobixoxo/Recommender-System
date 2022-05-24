@@ -7,8 +7,8 @@ def index_route():
     links = ""
     for i in range(1,11):
         links += f"<a href = '/recommend_movies/{i}' > recommendations for user {i} </a><br>"
-
-    return "<a href='/view_db' > view the database </a><br> " + links
+    home = "<a href='/home' > home Page </a><br>"
+    return home + "<a href='/view_db' > view the database </a><br> " + links
 
 @app.route('/home')
 def home_route():
