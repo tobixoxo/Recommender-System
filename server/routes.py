@@ -22,10 +22,10 @@ def home_route():
 @app.route('/view_db')
 def view_db_route():
     return render_template('view_db.html', **{
-        'movies' : Movie.query.all(),
-        'genres' : Genre.query.all(),
+        'movies' : Movie.query.all()[:30],
+        'genres' : Genre.query.all()[:30],
         # 'MovieGenre' : MovieGenre.query.all(),
-        'ratings' : UserRatings.query.all(),
+        'ratings' : UserRatings.query.all()[:30],
     })
 
 from collaborative_filtering.collaborative_filtering import make_recommendations
@@ -83,4 +83,8 @@ def dashboard_route():
     credentials = dict(request.form)
     user = User.query.filter(User.email == credentials['email']).first()
     print(user)
-    return render_template('dashboard.html', value = user)
+    movs = make_recommendations(user.id)
+    return render_template('dashboard.html', **{
+        'user': user,
+        'recommendations' : movs
+    })
