@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+:root{
+    --orange-light:#C7493A;
+    --orange-dark: #A33327;
+    --green-light: #689775;
+    --peach-dark: #917164;
+    --peach-light: #AD8174;
+    --black: black;
+    --footer-height: 15vh;
+    --nav-bar-height: 15vh
+}
+
+body{
+    background-color: black;
+    color: var(--peach-light);
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    /* padding: 10px ; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top : 0;
+    position: fixed;
+    width: 100%;
+    height: var(--nav-bar-height);
+    /* outline: 2px red solid; */
+    background-color: var(--black);
+}
+
+.navbar-logo-title{
+    column-gap: 15px;
+    display: flex;
+}
+.navbar-logo{
+    padding: 10px;
+    fill: var(--orange-dark);
+    transition: transform .2s ;
+}
+.navbar-logo:hover{
+    transform: rotate(-9deg);
+}
+.navbar-title{
+    display: flex;
+    align-items: center;
+}
+.navbar-icons{
+    display: flex;
+    justify-content: space-evenly;
+    /* width: 100%; */
+    gap: 24px;
+    margin-left: auto;
+}
+.navbar-icon{
+    fill: var(--orange-light);
+    padding: 5px;
+}
+
+.navbar-icon:hover{
+    transform: scale(1.5);
+    fill: var(--peach-light)
+}
+
+.navbar-title{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+main{
+    padding: 10px;
+    margin-top: var(--nav-bar-height);
+    /* outline: 2px red solid; */
+}
+
+footer{
+    /* outline:2px red solid */
+    height: var(--footer-height);
+    background-color: var(--orange-dark);
+}
+
+a:link {
+    color: var(--orange-light);
+}
+a:visited {
+    color: var(--green-light);
+}
+
+.search-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.search-box-field{
+    /* outline: red solid; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 300px;
+    height: 30px;
+}
+.search-box-button{
+    border-top-right-radius: 15px ;
+    border-bottom-right-radius: 15px;
+}

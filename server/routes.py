@@ -1,6 +1,9 @@
+# from crypt import methods
+from unittest import result
+from urllib import request
 from server import app
 from server.models import *
-from flask import render_template
+from flask import render_template, request
 
 @app.route('/')
 def index_route():
@@ -32,10 +35,19 @@ def recommend_movies_route(user_id):
         'movs' : movs
     })
 
-@app.route('/search_movies')
+@app.route('/search_movies', methods=['GET','POST'])
 def search_movies_route():
-    return "<h1> Search Movies Here! </h1>"
+    if request.method == 'GET':
+        return render_template("search_movies.html")
+    if request.method == 'POST':
+        form_data = request.form
+        form_data1 = dict(form_data)
+        if form_data1['search_string'] == "":
+            return render_template("search_movies.html")
+        query = Movie.query.filter(Movie.title.contains(form_data1['search_string']))
+        results = [movie for movie in query]
+        return render_template("search_movies.html",value = results)
 
 @app.route('/login_form')
 def login_form_route():
-    return "<h1>Login Form Here!</h1>"
+    return render_template('login_form.html')
