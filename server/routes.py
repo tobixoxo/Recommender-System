@@ -78,4 +78,9 @@ def login_form_route():
 def signup_form_route():
     return render_template('signup_form.html')
 
-''''''
+@app.route('/dashboard', methods=['GET','POST'])
+def dashboard_route():
+    credentials = dict(request.form)
+    user = User.query.filter(User.email == credentials['email']).first()
+    print(user)
+    return render_template('dashboard.html', value = user)
