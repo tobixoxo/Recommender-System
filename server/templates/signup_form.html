@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../static/login_form.css">
-    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/signup_form.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,27 +27,36 @@
         </div>
     </nav>
     <main>
-        <h1>Welcome back! p</h1>
-        <form class="login-form" action="" method="POST">
-            <div class = "login-form-field">
-                <label for = "name">Username</label>
-                <input type="text" required>
+        <h1>begin Your awesome journey from here! :</h1>
+        <form class = "signup-form" action="/login_form" method="POST">
+            <div class = "signup-form-field">
+                <label for = "name" >Name</label>
+                <input type="text" name = "name" required>
             </div>
-            <br>
-            <div class = "login-form-field">
-                <label for = "Password">Password</label>
-                <input type = "password" required>
+            <div class = "signup-form-field">
+                <label for="nickname">UserName</label>
+                <input type="text"  name = "nickname" required>
             </div>
-            <br>
-            <button class = "login-form-submit" type="submit">Sign in</button>
+            <div class = "signup-form-field">
+                <label for = "email" >E-mail</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class = "signup-form-field">
+                <label for = "dob" >date of Birth</label>
+                <input type="date" name="dob">
+            </div>
+            <div class = "signup-form-field">
+                <label for="bio" >Bio</label>
+                <input type = "text" name="bio">
+            </div>
+            <div class = "signup-form-field">
+                <label for="password" >Password</label>
+            <input type ="password" name = "password">
+            </div>
+            <button type = "submit" class = "signup-form-submit" value="Submit">
+                Submit
+            </button>
         </form>
-        <div>
-            <p>
-                Not a Member? Don't worry, 
-                <a href="/signup_form" >Sign-Up</a>
-                right now and become the cool movie nerd 
-            </p>
-        </div>
     </main>
     <footer>
         Made with ❤ by <a href = "https://github.com/tobixoxo">Sanjeev</a> :p

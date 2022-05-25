@@ -1,9 +1,11 @@
 # from crypt import methods
+from dataclasses import dataclass
 from unittest import result
 from urllib import request
 from server import app
 from server.models import *
 from flask import render_template, request
+from datetime import datetime
 
 @app.route('/')
 def index_route():
@@ -48,6 +50,32 @@ def search_movies_route():
         results = [movie for movie in query]
         return render_template("search_movies.html",value = results)
 
-@app.route('/login_form')
+@app.route('/login_form', methods =['GET','POST'])
 def login_form_route():
-    return render_template('login_form.html')
+    if request.method == 'GET':
+        return render_template('login_form.html')
+    if request.method == 'POST':
+        form_data1 = request.form
+        form_data = dict(form_data1)
+        # print(form_data['dob']," " ,type(form_data['dob']))
+        dt = datetime.strptime(form_data['dob'],'%Y-%m-%d')
+        d = dt.date()
+        form_data['dob'] = d
+        print(form_data['dob']," " ,type(form_data['dob']))
+        db.session.add(User(** {
+            'name': form_data['name'],
+            'nickname':form_data['nickname'],
+            'email':form_data['email'],
+            'dob' : form_data['dob'],
+            'bio':form_data['bio'],
+            'password': form_data['password']
+        }))
+        db.session.commit()
+        # print(form_data,"\n",form_data1)
+        return render_template('login_form.html')
+
+@app.route('/signup_form')
+def signup_form_route():
+    return render_template('signup_form.html')
+
+''''''
