@@ -39,7 +39,9 @@
         </form>
         <div class = "search-results">
             {% for movie in value %}
-                <ul>{{movie.title}}</ul>
+                <ul>
+                    <a href ='/movie_details/{{movie.id}}'>{{movie.title}}</a>
+                </ul>
             {% endfor %}
         </div>
     </main>

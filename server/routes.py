@@ -1,5 +1,6 @@
 # from crypt import methods
 from dataclasses import dataclass
+from operator import methodcaller
 from unittest import result
 from urllib import request
 from server import app
@@ -89,6 +90,8 @@ def dashboard_route():
         'recommendations' : movs
     })
 
-@app.route('/movie_details')
-def movie_details_route():
-    return render_template('movie_details.html')
+@app.route('/movie_details/<int:movie_id>',methods=['POST','GET'])
+def movie_details_route(movie_id):
+    movie = Movie.query.get(movie_id)
+    return render_template('movie_details.html',value = movie)
+
