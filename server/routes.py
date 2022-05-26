@@ -7,6 +7,7 @@ from server import app
 from server.models import *
 from flask import render_template, request
 from datetime import datetime
+import requests
 
 @app.route('/')
 def index_route():
@@ -90,8 +91,20 @@ def dashboard_route():
         'recommendations' : movs
     })
 
+def fetch_poster(tmdb_id):
+    
+    response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
+    return "https://image.tmdb.org/t/p/original/" + response['poster_path']
+
 @app.route('/movie_details/<int:movie_id>',methods=['POST','GET'])
 def movie_details_route(movie_id):
     movie = Movie.query.get(movie_id)
-    return render_template('movie_details.html',value = movie)
+    obj = Links.query.filter(Links.movie_id == movie_id).first()
+    if obj == None:
+        return render_template('movie_details.html',movie)
+    poster_path = fetch_poster(obj.tmdb_id)
+    return render_template('movie_details.html',**{
+        'movie' : movie,
+        'poster_path' : poster_path
+    } )
 

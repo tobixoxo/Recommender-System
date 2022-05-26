@@ -88,4 +88,7 @@ a:visited {
     color: var(--green-light);
 }
 
-
+img{
+    height: 500px;
+    width: auto;
+}
