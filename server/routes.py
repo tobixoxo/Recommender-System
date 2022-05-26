@@ -1,22 +1,17 @@
-from urllib import request
-from server import app
+from server import app 
 from server.models import *
-from flask import render_template, request
-from datetime import datetime
 import requests
+from datetime import datetime
+
+from flask import  render_template, request
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
+from server.jwt_functions import *
+from collaborative_filtering.collaborative_filtering import make_recommendations
 
 @app.route('/')
 def index_route():
     return render_template('index.html')
-
-@app.route('/home')
-def home_route():
-    links = ""
-    for i in range(1,11):
-        links += f"<a href = '/recommend_movies/{i}' > recommendations for user {i} </a><br>"
-    home = "<a href='/home' > home Page </a><br>"
-    return home + "<a href='/view_db' > view the database </a><br> " + links
-
 @app.route('/view_db')
 def view_db_route():
     return render_template('view_db.html', **{
@@ -24,15 +19,6 @@ def view_db_route():
         'genres' : Genre.query.all()[:30],
         # 'MovieGenre' : MovieGenre.query.all(),
         'ratings' : UserRatings.query.all()[:30],
-    })
-
-from collaborative_filtering.collaborative_filtering import make_recommendations
-
-@app.route('/recommend_movies/<int:user_id>')
-def recommend_movies_route(user_id):
-    movs = make_recommendations(user_id)
-    return render_template('recommend_movies.html', **{
-        'movs' : movs
     })
 
 @app.route('/search_movies', methods=['GET','POST'])
@@ -48,10 +34,10 @@ def search_movies_route():
         results = [movie for movie in query]
         return render_template("search_movies.html",value = results)
 
-@app.route('/login_form', methods =['GET','POST'])
-def login_form_route():
+@app.route('/signup', methods =['GET','POST'])
+def signup_route():
     if request.method == 'GET':
-        return render_template('login_form.html')
+        return render_template('signup.html')
     if request.method == 'POST':
         form_data1 = request.form
         form_data = dict(form_data1)
@@ -70,26 +56,38 @@ def login_form_route():
         }))
         db.session.commit()
         # print(form_data,"\n",form_data1)
-        return render_template('login_form.html')
+        return redirect('/login')
 
-@app.route('/signup_form')
-def signup_form_route():
-    return render_template('signup_form.html')
-
-@app.route('/dashboard', methods=['GET','POST'])
+@app.route('/dashboard')
+@jwt_required()
 def dashboard_route():
-    credentials = dict(request.form)
-    user = User.query.filter(User.email == credentials['email']).first()
-    print(user)
+    email = get_jwt_identity()
+    user = User.query.filter(User.email == email).first()
     movs = make_recommendations(user.id)
     print("movs : \n", movs)
     return render_template('dashboard.html', **{
         'user': user,
-        'recommendations' : movs
+        'recommendations' : movs,
     })
 
+@app.route('/login', methods =['GET','POST'])
+def login_route():
+    if request.method == 'GET':
+        return render_template('login.html')
+    if request.method == 'POST':
+        form_data = dict(request.form)
+        email = form_data['email']
+        password = form_data['password']
+        user = User.query.filter(User.email == email).first()
+        if user != None:
+            if (password == user.password):
+                return assign_access_refresh_tokens(email ,'/dashboard') 
+            else :
+                return "wrong password"
+        else :
+            return "email doesnt exist"  
+
 def fetch_poster(tmdb_id):
-    
     response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
     return "https://image.tmdb.org/t/p/original/" + response['poster_path']
 
@@ -105,3 +103,7 @@ def movie_details_route(movie_id):
         'poster_path' : poster_path
     } )
 
+@app.route('/logout')
+@jwt_required()
+def logout_route():
+    return unset_jwt()
