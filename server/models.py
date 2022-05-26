@@ -56,5 +56,10 @@ class Playlist(db.Model):
     description = db.Column(db.Text, unique = False, nullable = True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key = True)
 
+class Links(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    movie_id = db.Column(db.Integer, nullable = False)
+    imdb_id = db.Column(db.Integer, nullable = False)
+    tmdb_id = db.Column(db.Integer, nullable = False)
 #----------------------------------------------------
 

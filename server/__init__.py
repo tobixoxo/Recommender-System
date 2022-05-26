@@ -21,7 +21,8 @@ import create_data
 # create_data.create_data(
 #     'movies.csv',
 #     'ratings.csv',
-#     'dummy_users.csv'
+#     'dummy_users_final.csv',
+#     'links.csv'
 # )
 
 import server.routes
