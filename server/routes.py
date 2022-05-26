@@ -56,7 +56,7 @@ def signup_route():
         }))
         db.session.commit()
         # print(form_data,"\n",form_data1)
-        return render_template('signup.html')
+        return redirect('/login')
 
 @app.route('/dashboard')
 @jwt_required()
