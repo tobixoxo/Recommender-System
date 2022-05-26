@@ -88,3 +88,7 @@ def dashboard_route():
         'user': user,
         'recommendations' : movs
     })
+
+@app.route('/movie_details')
+def movie_details_route():
+    return render_template('movie_details.html')
