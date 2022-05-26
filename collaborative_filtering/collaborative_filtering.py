@@ -1,5 +1,3 @@
-from multiprocessing.sharedctypes import Value
-from warnings import simplefilter
 from server.models import Movie, UserRatings
 import pandas as pd
 

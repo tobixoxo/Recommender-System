@@ -1,7 +1,3 @@
-# from crypt import methods
-from dataclasses import dataclass
-from operator import methodcaller
-from unittest import result
 from urllib import request
 from server import app
 from server.models import *
