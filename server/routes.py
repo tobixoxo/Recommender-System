@@ -86,6 +86,7 @@ def dashboard_route():
     user = User.query.filter(User.email == credentials['email']).first()
     print(user)
     movs = make_recommendations(user.id)
+    print("movs : \n", movs)
     return render_template('dashboard.html', **{
         'user': user,
         'recommendations' : movs

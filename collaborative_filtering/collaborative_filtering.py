@@ -60,9 +60,10 @@ def make_recommendations(user_id):
     # print(similar_movies,"\n\n\n")
 
     similar_movies_dict = similar_movies.to_dict()
-    similar_movies_names = similar_movies_dict.keys()
-    # print(similar_movies_names,"\n\n\n")
+    similar_movies_names = list(similar_movies_dict.keys())
+    print(similar_movies_names,"\n\n\n")
 
     # NOTE : head of list = 10
+    # recommendations = [Movie.query.get(Movie.title == mov) for mov in similar_movies_names]
+    # return recommendations
     return similar_movies_names
-    # print(similar_movies_dict)

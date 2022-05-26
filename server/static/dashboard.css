@@ -88,4 +88,14 @@ a:visited {
     color: var(--green-light);
 }
 
+.user-about{
+    outline: var(--orange-light) solid;
+    margin: 0;
+    padding: 5px;
+}
+.user-dashboard{
+    outline: var(--orange-light) solid;
+    margin: 0;
+    padding: 5px;
+}
 

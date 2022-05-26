@@ -33,16 +33,22 @@
         {% if user == None %}
             <p>User Not exists!</p>
         {% else %}
-            <div class = "dashboard">
-                <h1>Hi {{user.name}}, How've you been!</h1>
+            <div class = "user">
+                <div class = "user-about">
+                    <h1>@{{user.nickname}}</h1>
+                    <h2>Hi {{user.name}}, How've you been!</h2>
+                    <p>{{user.bio}}</p>
+                </div>
                 <h2>Your dashboard!</h2>
-                <div>
+                <div class="user-dashboard">
                     {% if recommendations|length == 0 %}
                         <p>watch some movies and be sure to rate them :)</p>
                     {% else %}
                         <em>These are your recommendations, Should you choose to accept them!</em>
                         {% for movie in recommendations %}
-                            <ol>{{movie}}</ol>
+                            <ol>
+                                <a>{{movie}}</a>
+                            </ol>
                         {%endfor%}
                     {% endif %}
                 </div>
