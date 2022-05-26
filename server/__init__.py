@@ -27,8 +27,8 @@ import create_data
 
 import server.routes
 
-# from collaborative_filtering.collaborative_filtering import store_df_as_HDF
-# store_df_as_HDF()
+from collaborative_filtering.collaborative_filtering import store_df_as_HDF
+store_df_as_HDF()
 
 @login_manager.user_loader
 def load_user(user_id):
