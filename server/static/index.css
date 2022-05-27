@@ -84,7 +84,7 @@ main{
 }
 .index-phrase-word{
     font-weight: bolder;
-    font-size: 150px;
+    font-size: 15vw;
     margin : 35px 20px;
     text-align: center;
 }
@@ -101,7 +101,6 @@ main{
     margin-top: 10px;
 }
 .button{
-    
     background-color: var(--peach-light);
     border-radius: 15px;
     padding:10px 50px ;
@@ -122,4 +121,20 @@ a:visited {
 footer{
     height: var(--footer-height);
     background-color: var(--orange-dark);
+}
+
+.footer-icons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 24px;
+    margin-left: auto;
+}
+.footer-icon{
+    fill: var(--black);
+    padding: 5px;
+}
+
+.footer-icon:hover{
+    transform: scale(1.5);
+    fill: var(--black)
 }

@@ -98,17 +98,30 @@ a:visited {
     align-items: center;
 }
 
+.signup-form-field{
+    padding: 5px;
+}
+
 input {
     border-radius: 15px;
     /* border-bottom-left-radius: 15px; */
     width: 300px;
     height: 30px;
 }
+.signup-form-button{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
 
 .signup-form-submit{
     background-color: var(--peach-light);
-    margin:auto;
     border-radius: 15px;
-    width: 150px;
-    height: 30px;
+    padding:10px 50px ;
+    font-weight: bold;
+}
+.signup-form-submit:hover{
+    transform: scale(1.05);
+    background-color: #c29587;
 }

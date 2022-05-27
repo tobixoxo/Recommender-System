@@ -96,17 +96,33 @@ input {
     width: 300px;
     height: 30px;
 }
-.login-form-field {
+.login-form {
     display: flex;
-    /* flex-direction: column; */
+    padding: 5px;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.login-form-submit{
-    background-color: var(--peach-light);
-    margin:auto;
-    border-radius: 15px;
-    width: 150px;
-    height: 30px;
+
+.login-form-field{
+    padding: 5px
 }
 
+.login-form-button{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-form-submit{
+    background-color: var(--peach-light);
+    border-radius: 15px;
+    padding:10px 50px ;
+    font-weight: bold;
+}
+
+.login-form-submit:hover{
+    transform: scale(1.05);
+    background-color: #c29587;
+}
