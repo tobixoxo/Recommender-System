@@ -102,3 +102,35 @@ a:visited {
     padding: 5px;
 }
 
+footer{
+    height: var(--footer-height);
+    background-color: var(--orange-dark);
+}
+
+.desc{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.footer-icons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 24px;
+}
+
+.footer-icon{
+    fill: var(--green-light);
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+}
+
+.footer-icon:hover{
+    transform: scale(1.5);
+    fill: var(--green-light)
+}
+
+object{
+    pointer-events: none;
+}

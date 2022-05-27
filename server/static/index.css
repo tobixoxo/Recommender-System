@@ -18,6 +18,7 @@ body{
     font-family: 'Josefin Sans', sans-serif;
     margin: 0;
     padding: 0;
+    
 }
 
 nav{
@@ -123,18 +124,30 @@ footer{
     background-color: var(--orange-dark);
 }
 
+.desc{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
 .footer-icons{
     display: flex;
     justify-content: space-evenly;
     gap: 24px;
-    margin-left: auto;
 }
+
 .footer-icon{
-    fill: var(--black);
+    fill: var(--green-light);
     padding: 5px;
+    height: 20px;
+    width: 20px;
 }
 
 .footer-icon:hover{
     transform: scale(1.5);
-    fill: var(--black)
+    fill: var(--green-light)
+}
+
+object{
+    pointer-events: none;
 }

@@ -78,12 +78,6 @@ main{
     /* outline: 2px red solid; */
 }
 
-footer{
-    /* outline:2px red solid */
-    height: var(--footer-height);
-    background-color: var(--orange-dark);
-}
-
 a:link {
     color: var(--orange-light);
 }
@@ -124,4 +118,37 @@ input {
 .signup-form-submit:hover{
     transform: scale(1.05);
     background-color: #c29587;
+}
+
+footer{
+    height: var(--footer-height);
+    background-color: var(--orange-dark);
+}
+
+.desc{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.footer-icons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 24px;
+}
+
+.footer-icon{
+    fill: var(--green-light);
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+}
+
+.footer-icon:hover{
+    transform: scale(1.5);
+    fill: var(--green-light)
+}
+
+object{
+    pointer-events: none;
 }
