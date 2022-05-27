@@ -19,7 +19,6 @@ body{
 }
 
 nav{
-    /* padding: 10px ; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,7 +26,6 @@ nav{
     position: fixed;
     width: 100%;
     height: var(--nav-bar-height);
-    /* outline: 2px red solid; */
     background-color: var(--black);
 }
 
@@ -50,7 +48,6 @@ nav{
 .navbar-icons{
     display: flex;
     justify-content: space-evenly;
-    /* width: 100%; */
     gap: 24px;
     margin-left: auto;
 }
@@ -70,22 +67,59 @@ nav{
 }
 
 main{
+    min-height: 100vh;
     padding: 10px;
     margin-top: var(--nav-bar-height);
     /* outline: 2px red solid; */
 }
 
+.index-phrase{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* outline: red solid; */
+}
+.index-phrase-word{
+    font-weight: bolder;
+    font-size: 150px;
+    margin : 35px 20px;
+    text-align: center;
+}
+
+.index-phrase-offer{
+    text-align: center;
+    font-size: larger;
+    font-style: italic;
+}
+.index-button{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+.button{
+    
+    background-color: var(--peach-light);
+    border-radius: 15px;
+    padding:10px 50px ;
+}
+.button:hover{
+    transform: scale(1.05);
+    background-color: #c29587;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+a:visited {
+    color: var(--black);
+    text-decoration: none;
+}
 footer{
-    /* outline:2px red solid */
     height: var(--footer-height);
     background-color: var(--orange-dark);
 }
 
-a:link {
-    color: var(--orange-light);
-}
-a:visited {
-    color: var(--green-light);
-}
-
-
+*::selection { background-color: var(--green-light); color: var(--black) }
