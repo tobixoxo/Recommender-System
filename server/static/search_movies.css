@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+*::selection { background-color: var(--green-light); color: var(--black) }
 :root{
     --orange-light:#C7493A;
     --orange-dark: #A33327;
@@ -70,6 +71,7 @@ nav{
 }
 
 main{
+    min-height: 100vh;
     padding: 10px;
     margin-top: var(--nav-bar-height);
     /* outline: 2px red solid; */
@@ -103,4 +105,27 @@ a:visited {
 .search-box-button{
     border-top-right-radius: 15px ;
     border-bottom-right-radius: 15px;
+}
+.search-results{
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-results-mov{
+    font-size:x-large;
+    /* outline: var(--peach-light) solid; */
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results-title{
+    text-align: center;
+    padding: 3px;
+}
+.search-results-poster{
+    height: 400px;
+    width: auto;
+    border-radius: 5px;
+}
+.search-results-mov:hover{
+    transform: scale(1.01);
 }

@@ -42,7 +42,10 @@
         <div class = "search-results">
             {% for movie in value %}
                 <ul>
-                    <a href ='/movie_details/{{movie.id}}'>{{movie.title}}</a>
+                    <div class = "search-results-mov">
+                        <a class = "search-results-title" href ='/movie_details/{{movie.id}}'>{{movie.title}}</a>
+                        <img class="search-results-poster" src = '{{poster_paths[loop.index - 1]}}' ></img>
+                    </div>
                 </ul>
             {% endfor %}
         </div>

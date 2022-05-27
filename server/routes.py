@@ -20,6 +20,23 @@ def view_db_route():
         # 'MovieGenre' : MovieGenre.query.all(),
         'ratings' : UserRatings.query.all()[:30],
     })
+def fetch_poster(tmdb_id):
+    response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
+    if response == None:
+        return ""
+    return "https://image.tmdb.org/t/p/original/" + response['poster_path']
+
+@app.route('/movie_details/<int:movie_id>',methods=['POST','GET'])
+def movie_details_route(movie_id):
+    movie = Movie.query.get(movie_id)
+    obj = Links.query.filter(Links.movie_id == movie_id).first()
+    if obj == None:
+        return render_template('movie_details.html',movie)
+    poster_path = fetch_poster(obj.tmdb_id)
+    return render_template('movie_details.html',**{
+        'movie' : movie,
+        'poster_path' : poster_path
+    } )
 
 @app.route('/search_movies', methods=['GET','POST'])
 def search_movies_route():
@@ -32,7 +49,13 @@ def search_movies_route():
             return render_template("search_movies.html")
         query = Movie.query.filter(Movie.title.contains(form_data1['search_string']))
         results = [movie for movie in query]
-        return render_template("search_movies.html",value = results)
+        poster_paths = [fetch_poster(Links.query.filter(Links.movie_id == movie.id).first().tmdb_id) 
+                        for movie in results ]
+        print(poster_paths)
+        return render_template("search_movies.html", **{
+            'value' : results,
+            'poster_paths' : poster_paths
+        })
 
 @app.route('/signup', methods =['GET','POST'])
 def signup_route():
@@ -95,22 +118,6 @@ def login_route():
                 return "wrong password"
         else :
             return "email doesnt exist"  
-
-def fetch_poster(tmdb_id):
-    response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
-    return "https://image.tmdb.org/t/p/original/" + response['poster_path']
-
-@app.route('/movie_details/<int:movie_id>',methods=['POST','GET'])
-def movie_details_route(movie_id):
-    movie = Movie.query.get(movie_id)
-    obj = Links.query.filter(Links.movie_id == movie_id).first()
-    if obj == None:
-        return render_template('movie_details.html',movie)
-    poster_path = fetch_poster(obj.tmdb_id)
-    return render_template('movie_details.html',**{
-        'movie' : movie,
-        'poster_path' : poster_path
-    } )
 
 @app.route('/logout')
 @jwt_required()
