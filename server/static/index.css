@@ -84,14 +84,14 @@ main{
 }
 .index-phrase-word{
     font-weight: bolder;
-    font-size: 15vw;
+    font-size: 13vw;
     margin : 35px 20px;
     text-align: center;
 }
 
 .index-phrase-offer{
     text-align: center;
-    font-size: larger;
+    font-size: 2vw;
     font-style: italic;
 }
 .index-button{
