@@ -24,12 +24,12 @@ def unset_jwt():
 @jwt.unauthorized_loader
 def unauthorized_callback(callback):
     # No auth header
-    return redirect('/signup', 302)
+    return redirect('/login', 302)
 
 @jwt.invalid_token_loader
 def invalid_token_callback(callback):
     # Invalid Fresh/Non-Fresh Access token in auth header
-    resp = make_response(redirect( '/signup'))
+    resp = make_response(redirect( '/login'))
     unset_jwt_cookies(resp)
     return resp, 302
 

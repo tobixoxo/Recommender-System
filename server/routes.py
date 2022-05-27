@@ -58,6 +58,15 @@ def signup_route():
         # print(form_data,"\n",form_data1)
         return redirect('/login')
 
+@app.route('/give_rating/<int:movie_id>', methods = ['POST'])
+@jwt_required()
+def give_rating(movie_id):
+    user = get_jwt_identity()
+    form_data = dict(request.form)
+    rating = form_data['rating']
+    print(rating)
+    return "hello"
+
 @app.route('/dashboard')
 @jwt_required()
 def dashboard_route():
@@ -107,3 +116,4 @@ def movie_details_route(movie_id):
 @jwt_required()
 def logout_route():
     return unset_jwt()
+
