@@ -48,11 +48,14 @@
                         <p>watch some movies and be sure to rate them :)</p>
                     {% else %}
                         <em>These are your recommendations, Should you choose to accept them!</em>
-                        {% for movie in recommendations %}
-                            <ol>
-                                <a>{{movie}}</a>
-                            </ol>
+                        <div class = "recommendations-movs">
+                            {% for movie in recommendations %}
+                                <a class="recommendations-title" href = "/movie_details/{{movie.id}}">
+                                    <img class="recommendations-poster" src = "{{poster_paths[loop.index - 1]}}">
+                                </a>
                         {%endfor%}
+                        </div>
+                        
                     {% endif %}
                 </div>
             </div>

@@ -22,7 +22,6 @@ def view_db_route():
     })
 def fetch_poster(tmdb_id):
     response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
-    print(response,"\n", response['poster_path'], "\n\n\n")
     if 'poster_path' not in response or response['poster_path'] == None:
         return ""
     return "https://image.tmdb.org/t/p/original/" + response['poster_path']
@@ -52,7 +51,6 @@ def search_movies_route():
         results = [movie for movie in query]
         poster_paths = [fetch_poster(Links.query.filter(Links.movie_id == movie.id).first().tmdb_id) 
                         for movie in results ]
-        print(poster_paths)
         return render_template("search_movies.html", **{
             'value' : results,
             'poster_paths' : poster_paths
@@ -65,11 +63,9 @@ def signup_route():
     if request.method == 'POST':
         form_data1 = request.form
         form_data = dict(form_data1)
-        # print(form_data['dob']," " ,type(form_data['dob']))
         dt = datetime.strptime(form_data['dob'],'%Y-%m-%d')
         d = dt.date()
         form_data['dob'] = d
-        print(form_data['dob']," " ,type(form_data['dob']))
         db.session.add(User(** {
             'name': form_data['name'],
             'nickname':form_data['nickname'],
@@ -79,17 +75,24 @@ def signup_route():
             'password': form_data['password']
         }))
         db.session.commit()
-        # print(form_data,"\n",form_data1)
         return redirect('/login')
+
+def add_rating_to_db(user_email, rating, movie_id):
+    user_id = User.query.filter(User.email == user_email).first().id
+    db.session.add(UserRatings(**{
+        'movie_id':movie_id,
+        'user_id': user_id,
+        'rating' : rating
+    }))
+    db.session.commit()
 
 @app.route('/give_rating/<int:movie_id>', methods = ['POST'])
 @jwt_required()
 def give_rating(movie_id):
     user = get_jwt_identity()
     form_data = dict(request.form)
-    rating = form_data['rating']
-    print(rating)
-    return "hello"
+    add_rating_to_db(user, form_data['rating'], movie_id)
+    return redirect(f'/movie_details/{movie_id}')
 
 @app.route('/dashboard')
 @jwt_required()
@@ -97,10 +100,13 @@ def dashboard_route():
     email = get_jwt_identity()
     user = User.query.filter(User.email == email).first()
     movs = make_recommendations(user.id)
-    print("movs : \n", movs)
+    recommendations = [Movie.query.filter(Movie.title == mov).first() for mov in movs]
+    poster_paths = [fetch_poster(Links.query.filter(Links.movie_id == movie.id).first().tmdb_id) 
+                        for movie in recommendations ]
     return render_template('dashboard.html', **{
         'user': user,
-        'recommendations' : movs,
+        'recommendations' : recommendations,
+        'poster_paths' : poster_paths
     })
 
 @app.route('/login', methods =['GET','POST'])

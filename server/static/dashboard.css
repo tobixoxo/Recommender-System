@@ -78,6 +78,30 @@ main{
     /* outline: 2px red solid; */
 }
 
+.user-about{
+    font-size: 1.75vw;
+}
+
+.recommendations-movs{
+    /* outline: var(--peach-light) solid; */
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+
+.recommendations-title{
+    text-align: center;
+    padding: 3px;
+}
+.recommendations-poster{
+    height: auto;
+    width: 15vw;
+    border-radius: 5px;
+}
+.recommendations-poster:hover{
+    transform: scale(1.01);
+}
+
 footer{
     /* outline:2px red solid */
     height: var(--footer-height);
