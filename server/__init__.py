@@ -2,9 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_login import LoginManager
-from flask_bcrypt import Bcrypt
 from datetime import timedelta
 import os
+from os.path import exists
 from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
@@ -24,7 +24,6 @@ app.config['JWT_CSRF_CHECK_FORM'] = True
 
 jwt = JWTManager(app)
 db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
 
 from server.models import *
 db.create_all()
@@ -40,8 +39,10 @@ import create_data
 
 import server.routes
 
-# from collaborative_filtering.collaborative_filtering import store_df_as_HDF
-# store_df_as_HDF()
+if not exists('processed_data.h5'):
+    print("preprocessing dataframe, kindly wait for few minutes :)")
+    from collaborative_filtering.collaborative_filtering import store_df_as_HDF
+    store_df_as_HDF()
 
 @login_manager.user_loader
 def load_user(user_id):
