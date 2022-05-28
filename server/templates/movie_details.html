@@ -35,11 +35,15 @@
         <h1 >Liked this movie? Very much? Nah? <br> Rate it here</h1>
         <div class = "movie-details">
             <img class="movie-poster" src = "{{poster_path}}">
-            <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
-                <p >{{movie.title}}</p>
-                <input type="range" min="1" max="5" value="3"  name = "rating">
-                <button type = "submit">submit</button>
-            </form>
+            {% if already_rated %}
+                <p style = "text-align: center;">you rated this movie {{rating}} ⭐</p>
+            {% else %}
+                <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
+                    <p >{{movie.title}}</p>
+                    <input type="range" min="1" max="5" value="3"  name = "rating">
+                    <button type = "submit">submit</button>
+                </form>
+            {% endif %}
         </div>
         
     </main>

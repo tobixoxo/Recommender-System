@@ -27,7 +27,21 @@ def fetch_poster(tmdb_id):
     return "https://image.tmdb.org/t/p/original/" + response['poster_path']
 
 @app.route('/movie_details/<int:movie_id>',methods=['POST','GET'])
+@jwt_required(optional = True)
 def movie_details_route(movie_id):
+    user = get_jwt_identity()
+    already_rated = False
+    rating = None
+    if user is not None:
+        user_id = User.query.filter(User.email == user).first().id
+        ratings = UserRatings.query.filter( 
+            UserRatings.user_id == user_id).filter(
+                UserRatings.movie_id == movie_id
+            ).first()
+        if ratings is not None:
+            rating = ratings.rating
+            already_rated = True 
+        
     movie = Movie.query.get(movie_id)
     obj = Links.query.filter(Links.movie_id == movie_id).first()
     if obj == None:
@@ -35,7 +49,9 @@ def movie_details_route(movie_id):
     poster_path = fetch_poster(obj.tmdb_id)
     return render_template('movie_details.html',**{
         'movie' : movie,
-        'poster_path' : poster_path
+        'poster_path' : poster_path,
+        'already_rated': already_rated,
+        'rating' : rating
     } )
 
 @app.route('/search_movies', methods=['GET','POST'])
