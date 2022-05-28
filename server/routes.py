@@ -22,8 +22,8 @@ def view_db_route():
     })
 def fetch_poster(tmdb_id):
     response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
-    
-    if 'poster_path' not in response:
+    print(response,"\n", response['poster_path'], "\n\n\n")
+    if 'poster_path' not in response or response['poster_path'] == None:
         return ""
     return "https://image.tmdb.org/t/p/original/" + response['poster_path']
 
