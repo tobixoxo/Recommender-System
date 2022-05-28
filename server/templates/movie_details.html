@@ -31,21 +31,25 @@
             </a>
         </div>
     </nav>
-    <main>
-        <h1 >Liked this movie? Very much? Nah? <br> Rate it here</h1>
-        <div class = "movie-details">
-            <img class="movie-poster" src = "{{poster_path}}">
-            {% if already_rated %}
-                <p style = "text-align: center;">you rated this movie {{rating}} ⭐</p>
-            {% else %}
-                <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
-                    <p >{{movie.title}}</p>
-                    <input type="range" min="1" max="5" value="3"  name = "rating">
-                    <button type = "submit">submit</button>
-                </form>
-            {% endif %}
+    <main class = "movie-details">
+        <h1 >{{movie.title}}</h1>
+        <div class = "movie-genres">
+            {% for genre in genres %}
+                <div>{{genre}}</div>
+            {% endfor %}
         </div>
+        <img class="movie-poster" src = "{{poster_path}}">
+
+        <div >Liked this movie? Very much? Nah? <br> Rate it here</div>
+        {% if already_rated %}
+            <div style = "text-align: center;">you rated this movie {{rating}} ⭐</div>
+        {% else %}
         
+            <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
+                <input type="range" min="1" max="5" value="3"  name = "rating">
+                <button class = "rating-form-button" type = "submit">submit</button>
+            </form>
+        {% endif %}
     </main>
     <footer>
         <div class = "desc">

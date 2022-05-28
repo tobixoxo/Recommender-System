@@ -32,34 +32,36 @@
         </div>
     </nav>
     <main>
+        <h1>@{{user.nickname}}</h1>
+        <section class = "user-about">
+            <h2>Hi {{user.name}}, How've you been!</h2>
+            <p>{{user.bio}}</p>
+        </section>
+        <section class = "watch-history">
+            <h2>Your watch history</h2>
+            <ul>
+                {% for mr in rated_movies%} 
+                <li>{{mr['title']}} : {{mr['rating']}} ⭐
+                </li>
+                {%endfor%}
+            </ul>
+        </section>
         
-        {% if user == None %}
-            <p>User Not exists!</p>
-        {% else %}
-            <div class = "user">
-                <div class = "user-about">
-                    <h1>@{{user.nickname}}</h1>
-                    <h2>Hi {{user.name}}, How've you been!</h2>
-                    <p>{{user.bio}}</p>
+        <section class="user-dashboard">
+            <h2>Your recommendations!</h2>
+            {% if recommendations|length == 0 %}
+                <p>watch some movies and be sure to rate them :)</p>
+            {% else %}
+                <em>These are your recommendations, Should you choose to accept them!</em>
+                <div class = "recommendations-movs">
+                    {% for movie in recommendations %}
+                        <a class="recommendations-title" href = "/movie_details/{{movie.id}}">
+                            <img class="recommendations-poster" src = "{{poster_paths[loop.index - 1]}}">
+                        </a>
+                {%endfor%}
                 </div>
-                <h2>Your dashboard!</h2>
-                <div class="user-dashboard">
-                    {% if recommendations|length == 0 %}
-                        <p>watch some movies and be sure to rate them :)</p>
-                    {% else %}
-                        <em>These are your recommendations, Should you choose to accept them!</em>
-                        <div class = "recommendations-movs">
-                            {% for movie in recommendations %}
-                                <a class="recommendations-title" href = "/movie_details/{{movie.id}}">
-                                    <img class="recommendations-poster" src = "{{poster_paths[loop.index - 1]}}">
-                                </a>
-                        {%endfor%}
-                        </div>
-                        
-                    {% endif %}
-                </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </section>
     </main>
     <footer>
         <div class = "desc">

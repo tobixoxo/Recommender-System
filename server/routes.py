@@ -41,7 +41,7 @@ def movie_details_route(movie_id):
         if ratings is not None:
             rating = ratings.rating
             already_rated = True 
-        
+
     movie = Movie.query.get(movie_id)
     obj = Links.query.filter(Links.movie_id == movie_id).first()
     if obj == None:
@@ -51,7 +51,8 @@ def movie_details_route(movie_id):
         'movie' : movie,
         'poster_path' : poster_path,
         'already_rated': already_rated,
-        'rating' : rating
+        'rating' : rating,
+        'genres' :[g.title for g in movie.genres]
     } )
 
 @app.route('/search_movies', methods=['GET','POST'])
@@ -119,10 +120,16 @@ def dashboard_route():
     recommendations = [Movie.query.filter(Movie.title == mov).first() for mov in movs]
     poster_paths = [fetch_poster(Links.query.filter(Links.movie_id == movie.id).first().tmdb_id) 
                         for movie in recommendations ]
+    rated_movies = [{
+        'title' : Movie.query.get(mr.movie_id).title,
+        'rating' : mr.rating
+    } for mr in UserRatings.query.filter(UserRatings.user_id == user.id)]
+
     return render_template('dashboard.html', **{
         'user': user,
         'recommendations' : recommendations,
-        'poster_paths' : poster_paths
+        'poster_paths' : poster_paths,
+        'rated_movies' : rated_movies
     })
 
 @app.route('/login', methods =['GET','POST'])

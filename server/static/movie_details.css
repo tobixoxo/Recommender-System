@@ -74,6 +74,10 @@ main{
     min-height: 100vh;
     padding: 10px;
     margin-top: var(--nav-bar-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 7px
     /* outline: 2px red solid; */
 }
 
@@ -81,21 +85,40 @@ h1{
     text-align: center;
 }
 
-.movie-details{
-    font-size: 2.5vw;
-    display: flex;
-    flex-direction: column;
-}
-
 .movie-poster{
-    margin: auto;
-    height: auto;
+    height: auto; 
     width: 25vw;
     border-radius: 5px;
 }
+.movie-genres{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
 
+.movie-genres >*{
+    background-color: var(--orange-dark);
+    color: var(--green-light);
+    border-radius: 10px;
+    font-size: medium;
+    padding: 5px;
+}
 .rating-form{
-    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 3px;
+}
+
+.rating-form-button{
+    background-color: var(--peach-light);
+    border-radius: 15px;
+    padding:10px 50px ;
+    font-weight: bold;
+}
+.rating-form-button:hover{
+    transform: scale(1.05);
+    background-color: #c29587;
 }
 
 footer{

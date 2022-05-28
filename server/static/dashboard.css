@@ -82,6 +82,11 @@ main{
     font-size: 1.75vw;
 }
 
+.watch-history{
+    outline: var(--orange-light) solid;
+    padding: 10px;
+}
+
 .recommendations-movs{
     /* outline: var(--peach-light) solid; */
     display: flex;
