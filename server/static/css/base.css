@@ -33,6 +33,7 @@ nav{
     height: var(--nav-bar-height);
     /* outline: 2px red solid; */
     background-color: var(--black);
+    z-index: 1;
 }
 
 .navbar-logo-title{

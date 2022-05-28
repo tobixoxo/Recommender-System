@@ -52,7 +52,7 @@ def make_recommendations(user_id):
     #print("list of row of similar movies \n", similar_movies0,"\n\n")
     #print("concatanated df similar movies " ,similar_movies, "\n\n\n")
 
-    similar_movies = similar_movies.sum().sort_values(ascending = False).head(10)
+    similar_movies = similar_movies.sum().sort_values(ascending = False).head(18)
 
     # #print(similar_movies,"\n\n\n")
 
