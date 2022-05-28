@@ -1,7 +1,11 @@
 .user-about{
     font-size: 1.75vw;
+    text-align: left;
 }
-
+.username{
+    text-align: left;
+    font-size: 7vh;
+}
 .watch-history{
     outline: var(--orange-light) solid;
     padding: 10px;

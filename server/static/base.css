@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
 *::selection { background-color: var(--green-light); color: var(--black) }
 
+h1,h2{
+    text-align: center;
+}
 :root{
     --orange-light:#C7493A;
     --orange-dark: #A33327;

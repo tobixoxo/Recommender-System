@@ -20,9 +20,9 @@
 {% endblock %}
 
 {% block main %}
-    <h1>@{{user.nickname}}</h1>
+    <h1 class = "username">@{{user.nickname}}</h1>
     <section class = "user-about">
-        <h2>Hi {{user.name}}, How've you been!</h2>
+        <p>Hi {{user.name}}, How've you been!</p>
         <p>{{user.bio}}</p>
     </section>
     <section class = "watch-history">
