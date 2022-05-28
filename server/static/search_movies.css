@@ -111,7 +111,6 @@ a:visited {
     flex-wrap: wrap;
 }
 .search-results-mov{
-    font-size:x-large;
     /* outline: var(--peach-light) solid; */
     display: flex;
     flex-direction: column;
@@ -122,8 +121,8 @@ a:visited {
     padding: 3px;
 }
 .search-results-poster{
-    height: 400px;
-    width: auto;
+    height: auto;
+    width: 15vw;
     border-radius: 5px;
 }
 .search-results-mov:hover{
