@@ -31,13 +31,18 @@ This a web application, with a machine learning model, which mimics collaborativ
 ## Color Scheme
 
 the [Color Theme](https://visme.co/blog/wp-content/uploads/2016/09/website6.jpg) have 6 colors :  
-- <span style="background-color:black;color:black">||||||||||||||||||<span>
-- <span style="background-color:#C7493A;color:#C7493A;">||||||||||||||||||</span>
-- <span style="background-color:#A33327;color:#A33327; ">||||||||||||||||||</span>
-- <span style="background-color:#689775;color:#689775;">||||||||||||||||||</span>
-- <span style="background-color:#917164;color:#917164;">||||||||||||||||||</span>
-- <span style="background-color:#AD8174;color:#AD8174;">||||||||||||||||||</span>
 
+- ![000000](https://via.placeholder.com/15/000000/000000?text=+) `#000000`
+
+- ![#C7493A](https://via.placeholder.com/15/C7493A/000000?text=+) `#C7493A`
+
+- ![#A33327](https://via.placeholder.com/15/A33327/000000?text=+) `#A33327`
+
+- ![#689775](https://via.placeholder.com/15/689775/000000?text=+) `#689775`
+
+- ![#917164](https://via.placeholder.com/15/917164/000000?text=+) `#917164`
+
+- ![#AD8174](https://via.placeholder.com/15/AD8174/000000?text=+) `#AD8174`
 
 ## Making account
 - to make an account, enter dummy credentials
