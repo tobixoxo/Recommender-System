@@ -1,77 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
-*::selection { background-color: var(--green-light); color: var(--black) }
-:root{
-    --orange-light:#C7493A;
-    --orange-dark: #A33327;
-    --green-light: #689775;
-    --peach-dark: #917164;
-    --peach-light: #AD8174;
-    --black: black;
-    --footer-height: 15vh;
-    --nav-bar-height: 15vh
-}
-
-body{
-    background-color: black;
-    color: var(--peach-light);
-    font-family: 'Josefin Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-nav{
-    /* padding: 10px ; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    top : 0;
-    position: fixed;
-    width: 100%;
-    height: var(--nav-bar-height);
-    /* outline: 2px red solid; */
-    background-color: var(--black);
-}
-
-.navbar-logo-title{
-    column-gap: 15px;
-    display: flex;
-}
-.navbar-logo{
-    padding: 10px;
-    fill: var(--orange-dark);
-    transition: transform .2s ;
-}
-.navbar-logo:hover{
-    transform: rotate(-9deg);
-}
-.navbar-title{
-    display: flex;
-    align-items: center;
-}
-.navbar-icons{
-    display: flex;
-    justify-content: space-evenly;
-    /* width: 100%; */
-    gap: 24px;
-    margin-left: auto;
-}
-.navbar-icon{
-    fill: var(--orange-light);
-    padding: 5px;
-}
-
-.navbar-icon:hover{
-    transform: scale(1.5);
-    fill: var(--peach-light)
-}
-
-.navbar-title{
-    font-size: x-large;
-    font-weight: bold;
-}
 
 main{
-    min-height: 100vh;
     padding: 10px;
     margin-top: var(--nav-bar-height);
     display: flex;
@@ -103,71 +31,8 @@ h1{
     font-size: medium;
     padding: 5px;
 }
-.rating-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3px;
-}
-
-.rating-form-button{
-    background-color: var(--peach-light);
-    border-radius: 15px;
-    padding:10px 50px ;
-    font-weight: bold;
-}
-.rating-form-button:hover{
-    transform: scale(1.05);
-    background-color: #c29587;
-}
-
-footer{
-    /* outline:2px red solid */
-    height: var(--footer-height);
-    background-color: var(--orange-dark);
-}
-
-a:link {
-    color: var(--orange-light);
-}
-a:visited {
-    color: var(--green-light);
-}
 
 img{
     height: 500px;
     width: auto;
-}
-
-footer{
-    height: var(--footer-height);
-    background-color: var(--orange-dark);
-}
-
-.desc{
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-}
-
-.footer-icons{
-    display: flex;
-    justify-content: space-evenly;
-    gap: 24px;
-}
-
-.footer-icon{
-    fill: var(--green-light);
-    padding: 5px;
-    height: 20px;
-    width: 20px;
-}
-
-.footer-icon:hover{
-    transform: scale(1.5);
-    fill: var(--green-light)
-}
-
-object{
-    pointer-events: none;
 }

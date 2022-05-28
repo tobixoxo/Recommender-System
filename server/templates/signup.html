@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="../static/signup.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <div class = "navbar-logo-title">
-            <a href = "/">
-                <svg xmlns="http://www.w3.org/2000/svg" class="navbar-logo" height="55" width="48"><path d="M18.3 22.1 16.6 26 12.7 27.7 16.6 29.4 18.3 33.3 20 29.4 23.9 27.7 20 26ZM31.6 21.5 30.35 24.2 27.65 25.45 30.35 26.7 31.6 29.4 32.85 26.7 35.55 25.45 32.85 24.2ZM7 8 10.7 15.6H17.2L13.5 8H17.95L21.65 15.6H28.15L24.45 8H28.9L32.6 15.6H39.1L35.4 8H41Q42.2 8 43.1 8.9Q44 9.8 44 11V37Q44 38.2 43.1 39.1Q42.2 40 41 40H7Q5.8 40 4.9 39.1Q4 38.2 4 37V11Q4 9.8 4.9 8.9Q5.8 8 7 8ZM7 18.6V37Q7 37 7 37Q7 37 7 37H41Q41 37 41 37Q41 37 41 37V18.6ZM7 18.6V37Q7 37 7 37Q7 37 7 37Q7 37 7 37Q7 37 7 37Z"/></svg>
-            </a>
-            <span class = "navbar-title">ChalChitra</span>
-        </div>
-        
-        <div class = "navbar-icons">
-            <a href ='/'>
-                <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
-            </a>
-            <a href ='/search_movies'>
-                <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            </a>
-            <a href ='/view_db'>
-            <svg class = "navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zM12 5.5v9l6-4.5z"/></svg> 
-            </a>
-        </div>
-    </nav>
-    <main>
+{% extends 'base.html' %}
+
+{% block css %}{% endblock %}
+
+{% block title %}Signup{% endblock %}
+
+{% block navbar_icons %}
+    <a href ='/'>
+        <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+    </a>
+    <a href ='/search_movies'>
+        <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    </a>
+    <a href ='/view_db'>
+    <svg class = "navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zM12 5.5v9l6-4.5z"/></svg> 
+    </a>
+{% endblock %}
+
+{% block main %}
         <h1>Begin Your awesome journey from here! :</h1>
         <form class = "signup-form" action="/signup" method="POST">
             <div class = "signup-form-field">
@@ -61,22 +49,4 @@
                 </button>
             </div>
         </form>
-    </main>
-    <footer>
-        <div class = "desc">
-            Made with ❤ by Sanjeev :p
-        </div>
-        <div class = "footer-icons">
-            <a class = "footer-icon" href="https://github.com/tobixoxo" target="_blank">
-                <object data = "../static/github.svg"></object>
-            </a>
-            <a class = "footer-icon" href="https://www.linkedin.com/in/sanjeev-singh-rawat-2b63b7201/" target="_blank">
-                <object data = "../static/linkedin.svg"></object>
-            </a>
-            <a class="footer-icon" href ="https://www.instagram.com/sanjeev.sr_/" target="_blank">
-                <object data="../static/insta.svg"></object>
-            </a>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock %}

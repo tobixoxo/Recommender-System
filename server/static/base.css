@@ -11,7 +11,6 @@
     --footer-height: 15vh;
     --nav-bar-height: 15vh
 }
-
 body{
     background-color: black;
     color: var(--peach-light);
@@ -72,52 +71,9 @@ nav{
 }
 
 main{
-    min-height: 100vh;
     padding: 10px;
+    min-height: 100vh;
     margin-top: var(--nav-bar-height);
-    /* outline: 2px red solid; */
-}
-
-a:link {
-    color: var(--orange-light);
-}
-a:visited {
-    color: var(--green-light);
-}
-
-.signup-form {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.signup-form-field{
-    padding: 5px;
-}
-
-input {
-    border-radius: 15px;
-    /* border-bottom-left-radius: 15px; */
-    width: 300px;
-    height: 30px;
-}
-.signup-form-button{
-    display:flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.signup-form-submit{
-    background-color: var(--peach-light);
-    border-radius: 15px;
-    padding:10px 50px ;
-    font-weight: bold;
-}
-.signup-form-submit:hover{
-    transform: scale(1.05);
-    background-color: #c29587;
 }
 
 footer{
@@ -152,3 +108,12 @@ footer{
 object{
     pointer-events: none;
 }
+
+a:link {
+    color: var(--orange-light);
+}
+a:visited {
+    color: var(--green-light);
+}
+
+

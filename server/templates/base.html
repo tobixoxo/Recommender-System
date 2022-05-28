@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/base.css">
+    <link rel="stylesheet" type="text/css" href="../static/forms.css">
+    <link rel="stylesheet" type="text/css" href="../static/{% block css %} {% endblock %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+<body>
+    <nav>
+        <div class = "navbar-logo-title">
+            <a href = "/">
+                <svg xmlns="http://www.w3.org/2000/svg" class="navbar-logo" height="55" width="48"><path d="M18.3 22.1 16.6 26 12.7 27.7 16.6 29.4 18.3 33.3 20 29.4 23.9 27.7 20 26ZM31.6 21.5 30.35 24.2 27.65 25.45 30.35 26.7 31.6 29.4 32.85 26.7 35.55 25.45 32.85 24.2ZM7 8 10.7 15.6H17.2L13.5 8H17.95L21.65 15.6H28.15L24.45 8H28.9L32.6 15.6H39.1L35.4 8H41Q42.2 8 43.1 8.9Q44 9.8 44 11V37Q44 38.2 43.1 39.1Q42.2 40 41 40H7Q5.8 40 4.9 39.1Q4 38.2 4 37V11Q4 9.8 4.9 8.9Q5.8 8 7 8ZM7 18.6V37Q7 37 7 37Q7 37 7 37H41Q41 37 41 37Q41 37 41 37V18.6ZM7 18.6V37Q7 37 7 37Q7 37 7 37Q7 37 7 37Q7 37 7 37Z"/></svg>
+            </a>
+            <span class = "navbar-title">ChalChitra</span>
+        </div>
+        
+        <div class = "navbar-icons">
+            {% block navbar_icons %}{% endblock %}
+        </div>
+    </nav>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        <div class = "desc">
+            Made with ❤ by Sanjeev :p
+        </div>
+        <div class = "footer-icons">
+            <a class = "footer-icon" href="https://github.com/tobixoxo" target="_blank">
+                <object data = "../static/github.svg"></object>
+            </a>
+            <a class = "footer-icon" href="https://www.linkedin.com/in/sanjeev-singh-rawat-2b63b7201/" target="_blank">
+                <object data = "../static/linkedin.svg"></object>
+            </a>
+            <a class="footer-icon" href ="https://www.instagram.com/sanjeev.sr_/" target="_blank">
+                <object data="../static/insta.svg"></object>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
