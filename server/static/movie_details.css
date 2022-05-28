@@ -77,6 +77,27 @@ main{
     /* outline: 2px red solid; */
 }
 
+h1{
+    text-align: center;
+}
+
+.movie-details{
+    font-size: 2.5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-poster{
+    margin: auto;
+    height: auto;
+    width: 25vw;
+    border-radius: 5px;
+}
+
+.rating-form{
+    margin:auto;
+}
+
 footer{
     /* outline:2px red solid */
     height: var(--footer-height);

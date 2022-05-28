@@ -32,13 +32,16 @@
         </div>
     </nav>
     <main>
-        <h1>Movie Page!</h1>
-        <p>{{movie.title}}</p>
-        <img src = "{{poster_path}}">
-        <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
-            <input type="range" min="1" max="5" value="3"  name = "rating">
-            <button type = "submit">submit</button>
-        </form>
+        <h1 >Liked this movie? Very much? Nah? <br> Rate it here</h1>
+        <div class = "movie-details">
+            <img class="movie-poster" src = "{{poster_path}}">
+            <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
+                <p >{{movie.title}}</p>
+                <input type="range" min="1" max="5" value="3"  name = "rating">
+                <button type = "submit">submit</button>
+            </form>
+        </div>
+        
     </main>
     <footer>
         <div class = "desc">
