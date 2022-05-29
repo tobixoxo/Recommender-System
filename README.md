@@ -56,11 +56,12 @@ the [Color Theme](https://visme.co/blog/wp-content/uploads/2016/09/website6.jpg)
 - `#AD8174`
 
 ## How to run locally 
-- clone the repo
-- make a vitrual environment and activate it(optional)
-- run `pip install -r requirements.txt`
-- run `flask run`
-- open `localhost:5000` on your browser
+- Clone the repository
+- Make a vitrual environment and activate it(optional)
+- Run `pip install -r requirements.txt`
+- Run `flask run`
+- Open `localhost:5000` on your browser
+- **Note** : initial setup takes 3-4 minutes due to preprocessing
 
 ## Making account
 - to make an account, enter dummy credentials
