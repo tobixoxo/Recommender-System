@@ -29,7 +29,10 @@
         <h2>Your watch history</h2>
         <ul>
             {% for mr in rated_movies%} 
-            <li>{{mr['title']}} : {{mr['rating']}} ⭐
+            <li>{{mr['title']}} :
+                {% for i in range(mr['rating'])%}
+                    ⭐
+                {%endfor%}
             </li>
             {%endfor%}
         </ul>
