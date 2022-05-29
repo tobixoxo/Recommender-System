@@ -36,6 +36,7 @@ import create_data
 
 import server.routes
 
+#runs just during intial setup
 if not exists('processed_data.h5'):
     print("preprocessing dataframe, kindly wait for few minutes :)")
     from collaborative_filtering.collaborative_filtering import store_df_as_HDF

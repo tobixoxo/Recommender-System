@@ -27,6 +27,7 @@ def get_similar_movies(movie, user_rating, item_similarity_df):
 
 
 def make_recommendations(user_id):
+    #read the preprocessed df
     data_store = pd.HDFStore('processed_data.h5')
     item_similarity_df =  data_store['preprocessed_df']
 
@@ -38,7 +39,6 @@ def make_recommendations(user_id):
     similar_movies = similar_movies0
 
     similar_movies = similar_movies.sum().sort_values(ascending = False).head(18)
-    similar_movies_dict = similar_movies.to_dict()
-    similar_movies_names = list(similar_movies_dict.keys())
+    similar_movies_title = list(similar_movies.to_dict().keys())
 
-    return similar_movies_names
+    return similar_movies_title
