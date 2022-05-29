@@ -4,7 +4,7 @@ This project is made for Microsoft Engage 2022 and for personal learning.
 ## Technologies Used 
 This is a web application, with machine learning model, which implements collaborative filtering. 
 - **Frontend rendering & styling** : HTML, CSS
-- **Backend handling**: Flask SQLAlchemy
+- **Backend handling**: Flask SQLAlchemy, Jwt Authentication
 - **Machine Learning** : Python Pandas, H5py
 - **Movie Dataset** : [MovieLens Small Dataset](https://www.kaggle.com/datasets/shubhammehta21/movie-lens-small-latest-dataset)
 
