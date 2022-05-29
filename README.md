@@ -1,15 +1,15 @@
 # **ChalChitra: Movie Recommender System** 
 - This project is made for *Microsoft Engage 2022* and personal learning. The project delivers a solution to [Challenge 3](https://acehacker.com/microsoft/engage2022/#challenges) by presenting a working prototype of a Movie Recommendation System.  
-- A good movie recommendation system, should be able to determine the user's interest. the same is achieved by using **collaborative filtering** which is Machine Learning technique used to identify relationships between pieces of data.  
+- A good movie recommendation system, should be able to determine the user's interests. The same is achieved by using **collaborative filtering** which is a Machine Learning technique used to identify relationships between pieces of data.  
 
 ## Features
-- User will be able to Search Movies in the database
+- User will be able to search for movies in the database
 - Rate movies according to their liking
 - Personalised Recommendations will be generated
 - Jwt authentication for sessions
 
 ## Technologies Used 
-This is a web application, with machine learning model, which implements collaborative filtering. 
+This is a web application, with a machine learning model, which implements collaborative filtering. 
 - **Frontend rendering & styling** : HTML, CSS
 - **Backend handling**: Flask SQLAlchemy, Jwt Authentication
 - **Machine Learning** : Python Pandas, H5py
@@ -64,9 +64,9 @@ the [Color Theme](https://visme.co/blog/wp-content/uploads/2016/09/website6.jpg)
 - **Note** : initial setup takes 3-4 minutes due to preprocessing
 
 ## Making account
-- to make an account, enter dummy credentials
+- To make an account, enter dummy credentials
 - To login, enter email and password
-- some dummy users already have been made:
+- Some dummy users already have been made:
 
 |email | password |
 |------|-------|
