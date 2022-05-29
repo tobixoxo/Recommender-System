@@ -2,7 +2,7 @@
 This project is made for Microsoft Engage 2022 and for personal learning.
 
 ## Technologies Used 
-This is a web application, with a machine learning model, which implements collaborative filtering. 
+This is a web application, with machine learning model, which implements collaborative filtering. 
 - **Frontend rendering & styling** : HTML, CSS
 - **Backend handling**: Flask SQLAlchemy
 - **Machine Learning** : Python Pandas, H5py
@@ -21,6 +21,9 @@ This is a web application, with a machine learning model, which implements colla
 
 ## Database Schema
 ![](database_schema/database_schema.svg)
+
+## Application Flow
+![](database_schema/application_flow.svg)
 
 ## Color Scheme
 
