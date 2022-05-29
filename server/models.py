@@ -1,8 +1,6 @@
 from server import db
 from flask_login import UserMixin
 
-
-
 MovieGenre = db.Table('MovieGenre',
     db.Column('movie_id', db.Integer, db.ForeignKey("movie.id"), nullable = False),
     db.Column('genre_id',db.Integer, db.ForeignKey("genre.id"), nullable = False )
@@ -12,6 +10,7 @@ PlaylistContent = db.Table('PlaylistContent',
     db.Column('playlist_id',db.Integer, db.ForeignKey("playlist.id"), nullable = False),
     db.Column('movie_id', db.Integer, db.ForeignKey("movie.id"), nullable = False)
 )
+
 #----------------------------'
 class UserRatings(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -21,7 +20,6 @@ class UserRatings(db.Model):
     def __str__(self):
         return f"user {self.user_id} gave {self.rating} to {self.movie_id}"
     
-        
 class Movie(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String, unique=False, nullable=False)
@@ -44,8 +42,6 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String, unique = False, nullable = True)
     dob = db.Column(db.Date, unique = False, nullable = True)
     bio = db.Column(db.Text, unique = False, nullable = True)
-    # playlists = db.relationship("Playlist", backref = db.backref("user", uselist = False), lazy = True)
-    # ratings = db.relationship("UserRating", backref = "user", lazy = True)
 
 class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key = True)

@@ -12,6 +12,7 @@ from collaborative_filtering.collaborative_filtering import make_recommendations
 @app.route('/')
 def index_route():
     return render_template('index.html')
+
 @app.route('/view_db')
 def view_db_route():
     return render_template('view_db.html', **{
@@ -20,6 +21,7 @@ def view_db_route():
         # 'MovieGenre' : MovieGenre.query.all(),
         'ratings' : UserRatings.query.all()[:30],
     })
+    
 def fetch_poster(tmdb_id):
     response = requests.get(f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=fe08c428401d53b57647f169311f2c4c&language=en-US").json()
     if 'poster_path' not in response or response['poster_path'] == None:

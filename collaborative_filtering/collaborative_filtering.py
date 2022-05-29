@@ -35,15 +35,10 @@ def make_recommendations(user_id):
     similar_movies0 = pd.DataFrame()
     for movie, rating in real_watcher:
         similar_movies0 = similar_movies0.append(get_similar_movies(movie, rating, item_similarity_df), ignore_index=True)
-
     similar_movies = similar_movies0
 
     similar_movies = similar_movies.sum().sort_values(ascending = False).head(18)
-
-
     similar_movies_dict = similar_movies.to_dict()
     similar_movies_names = list(similar_movies_dict.keys())
-
-    # NOTE : head of list = 10
 
     return similar_movies_names
