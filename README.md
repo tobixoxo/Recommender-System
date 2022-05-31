@@ -61,6 +61,7 @@ the [Color Theme](https://visme.co/blog/wp-content/uploads/2016/09/website6.jpg)
 - Run `pip install -r requirements.txt`
 - Run `flask run`
 - Open `localhost:5000` on your browser
+- Active Internet connection is required
 - **Note** : initial setup takes 3-4 minutes due to preprocessing
 
 ## Making account
