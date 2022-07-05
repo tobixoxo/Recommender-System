@@ -1,4 +1,4 @@
-from server import app 
+from server import app , bcrypt
 from server.models import *
 import requests
 from datetime import datetime
@@ -99,13 +99,15 @@ def signup_route():
         dt = datetime.strptime(form_data['dob'],'%Y-%m-%d')
         d = dt.date()
         form_data['dob'] = d
+        pw_hash = bcrypt.generate_password_hash(form_data['password'])
+        print(form_data['password']," ", pw_hash)
         db.session.add(User(** {
             'name': form_data['name'],
             'nickname':form_data['nickname'],
             'email':form_data['email'],
             'dob' : form_data['dob'],
             'bio':form_data['bio'],
-            'password': form_data['password']
+            'password': pw_hash
         }))
         db.session.commit()
         return redirect('/login')
@@ -149,7 +151,9 @@ def login_route():
         password = form_data['password']
         user = User.query.filter(User.email == email).first()
         if user != None:
-            if (password == user.password):
+            candidate_hash = bcrypt.generate_password_hash(password)
+            print(password, " ", candidate_hash)
+            if (bcrypt.check_password_hash(user.password,password)):
                 return assign_access_refresh_tokens(email ,'/dashboard') 
             else :
                 return "wrong password"

@@ -38,4 +38,5 @@ def create_data(movies_filename, ratings_filename, users_filename,links_filename
     for link in links:
         print("on link no. ", i)
         db.session.add(Links(**link))
+        i+= 1
     db.session.commit()
