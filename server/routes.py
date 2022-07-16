@@ -134,11 +134,27 @@ def dashboard_route():
         'rating' : mr.rating
     } for mr in UserRatings.query.filter(UserRatings.user_id == user.id)]
 
+    playlists = [
+        {
+            'id': 1,
+            'name' : "Action",
+            'description' : 'my collections',
+            'movies' : ['Avengers', 'Avengers 1', 'Avengers Returns']
+        },
+        {
+            'id': 2,
+            'name' : "Romance",
+            'description' : 'Raat ko dekhunga',
+            'movies' : ['50 shades', 'darker']
+        }
+    ]
+
     return render_template('dashboard.html', **{
         'user': user,
         'recommendations' : recommendations,
         'poster_paths' : poster_paths,
-        'rated_movies' : rated_movies
+        'rated_movies' : rated_movies,
+        'playlists' : playlists
     })
 
 @app.route('/login', methods =['GET','POST'])

@@ -53,4 +53,22 @@
             </div>
         {% endif %}
     </section>
+
+    <section id="user-playlist">
+        <h2>Your Playlists</h2>
+        {% if playlists|length == 0 %} 
+            <em> Create some playlists</em>
+        {% else %}
+            {%for playlist in playlists%}
+            <div class = "playlist">
+                <h3>{{playlist['name']}}</h3>
+                <ul>
+                    {%for movie in playlist['movies']%}
+                    <li>{{movie}}</li>
+                    {%endfor%}
+                </ul>
+            </div>
+            {%endfor%}
+        {% endif %}
+    </section>
 {% endblock %}
