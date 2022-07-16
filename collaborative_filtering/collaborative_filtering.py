@@ -6,6 +6,7 @@ def store_df_as_HDF():
 
     rating_dataframe = pd.DataFrame(data_list, columns = ['userId','title','rating'])
     user_ratings = rating_dataframe.pivot_table(index = ['userId'],columns = ['title'], values= 'rating')
+    # standardise the user_ratings
     user_ratings = user_ratings.fillna(0)
     item_similarity_df = user_ratings.corr(method = 'pearson')
     df_store = pd.HDFStore('processed_data.h5')
@@ -31,12 +32,11 @@ def make_recommendations(user_id):
     data_store = pd.HDFStore('processed_data.h5')
     item_similarity_df =  data_store['preprocessed_df']
 
-    real_watcher = watch_history_for_user(user_id)
+    user_watch_history = watch_history_for_user(user_id)
 
-    similar_movies0 = pd.DataFrame()
-    for movie, rating in real_watcher:
-        similar_movies0 = similar_movies0.append(get_similar_movies(movie, rating, item_similarity_df), ignore_index=True)
-    similar_movies = similar_movies0
+    similar_movies = pd.DataFrame()
+    for movie, rating in user_watch_history:
+        similar_movies = similar_movies.append(get_similar_movies(movie, rating, item_similarity_df), ignore_index=True)
 
     similar_movies = similar_movies.sum().sort_values(ascending = False).head(18)
     similar_movies_title = list(similar_movies.to_dict().keys())
