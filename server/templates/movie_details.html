@@ -46,12 +46,12 @@
         </form>
     {% endif %}
     <div>
-        <form action = "add_movie_to_playlist" method = "POST">
+        <form action = "/add_movie_to_playlist/{{movie.id}}" method = "POST">
             <label for = "playlist-name">
                 Add to Playlist
             </label>
-            <select name = "playlist-options">
-                <option value = '-1'>--select--</option>
+            <select name = "playlist-id">
+                <option disabled selected value = '-1'>--select--</option>
                 {% for playlist in playlists %}
                 <option value = "{{playlist['id']}}">{{playlist['name']}}</option>
                 {% endfor %}

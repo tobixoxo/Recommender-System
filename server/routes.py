@@ -45,6 +45,13 @@ def get_previous_rating(user, rating, already_rated, movie_id):
         rating = ratings.rating
         already_rated = True 
     return rating, already_rated
+
+def update_playlist(playlist_id, movie_id):
+    db.engine.execute(PlaylistContent.insert().values(**{
+        'playlist_id' : playlist_id,
+        'movie_id' : movie_id
+    }))
+
 #---------------------------------
 
 @app.route('/')
@@ -150,6 +157,14 @@ def add_playlist():
     user = get_jwt_identity()
     form_data = dict(request.form)
     add_playlist_to_db(user, form_data['playlist-name'])
+    return redirect('/dashboard')
+
+@app.route('/add_movie_to_playlist/<int:movie_id>', methods = ['POST'])
+@jwt_required()
+def add_movie_to_playlist(movie_id):
+    user = get_jwt_identity()
+    form_data = dict(request.form)
+    update_playlist(form_data['playlist-id'],movie_id)
     return redirect('/dashboard')
 
 @app.route('/dashboard')
