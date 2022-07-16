@@ -69,7 +69,7 @@
                 <h3>{{playlist['name']}}</h3>
                 <ul>
                     {%for movie in playlist['movies']%}
-                    <li>{{movie}}</li>
+                    <li><a href = "/movie_details/{{movie_id}}">{{movie.title}}</a></li>
                     {%endfor%}
                 </ul>
             </div>

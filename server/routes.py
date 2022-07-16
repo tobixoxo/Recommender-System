@@ -179,7 +179,7 @@ def dashboard_route():
     playlists = [
         {
             'name' : p.title,
-            'movies' : [Movie.query.get(pc.movie_id).title 
+            'movies' : [Movie.query.get(pc.movie_id) 
             for pc in 
             db.session.query(PlaylistContent).filter(PlaylistContent.c.playlist_id == p.id)]
         } for p in Playlist.query.filter(Playlist.user_id == user_id)
