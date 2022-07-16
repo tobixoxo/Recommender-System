@@ -165,6 +165,8 @@ def add_movie_to_playlist(movie_id):
 def dashboard_route():
     email = get_jwt_identity()
     user = User.query.filter(User.email == email).first()
+    
+    user_id = user.id
     movs = make_recommendations(user.id)
     recommendations = [Movie.query.filter(Movie.title == mov).first() for mov in movs]
     poster_paths = [fetch_poster(Links.query.filter(Links.movie_id == movie.id).first().tmdb_id) 
@@ -176,17 +178,11 @@ def dashboard_route():
 
     playlists = [
         {
-            'id': 1,
-            'name' : "Action",
-            'description' : 'my collections',
-            'movies' : ['Avengers', 'Avengers 1', 'Avengers Returns']
-        },
-        {
-            'id': 2,
-            'name' : "Romance",
-            'description' : 'Raat ko dekhunga',
-            'movies' : ['50 shades', 'darker']
-        }
+            'name' : p.title,
+            'movies' : [Movie.query.get(pc.movie_id).title 
+            for pc in 
+            db.session.query(PlaylistContent).filter(PlaylistContent.c.playlist_id == p.id)]
+        } for p in Playlist.query.filter(Playlist.user_id == user_id)
     ]
 
     return render_template('dashboard.html', **{
