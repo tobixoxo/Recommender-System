@@ -47,7 +47,7 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String, unique=False, nullable=False)
     description = db.Column(db.Text, unique = False, nullable = True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
 class Links(db.Model):
     id = db.Column(db.Integer, primary_key = True)

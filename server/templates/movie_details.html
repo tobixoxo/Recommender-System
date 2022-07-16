@@ -32,7 +32,6 @@
     {% if already_rated %}
         <div style = "text-align: center;">you rated this movie {{rating}} ⭐</div>
     {% else %}
-
         <form class = "rating-form" action = "/give_rating/{{movie.id}}" method="POST">
             <input
             class="rating"
@@ -46,4 +45,19 @@
             <button class = "rating-form-button" type = "submit">submit</button>
         </form>
     {% endif %}
+    <div>
+        <form action = "/add_movie_to_playlist/{{movie.id}}" method = "POST">
+            <label for = "playlist-name">
+                Add to Playlist
+            </label>
+            <select name = "playlist-id">
+                <option disabled selected value = '-1'>--select--</option>
+                {% for playlist in playlists %}
+                <option value = "{{playlist['id']}}">{{playlist['name']}}</option>
+                {% endfor %}
+            </select>
+            <button>Add</button>
+        </form>
+    </div>
+
 {% endblock %}

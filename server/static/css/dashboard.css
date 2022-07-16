@@ -1,42 +1,48 @@
-.user-about{
+.user-about {
     font-size: 1.75vw;
     text-align: left;
 }
-.username{
+.username {
     text-align: left;
     font-size: 7vh;
 }
-.watch-history{
+.watch-history {
     outline: var(--orange-light) solid;
     padding: 10px;
 }
 
-.recommendations-movs{
+.recommendations-movs {
     /* outline: var(--peach-light) solid; */
     display: flex;
     /* flex-direction: column; */
     flex-wrap: wrap;
 }
 
-.recommendations-title{
+.recommendations-title {
     text-align: center;
     padding: 3px;
 }
-.recommendations-poster{
+.recommendations-poster {
     height: auto;
     width: 15vw;
     border-radius: 5px;
 }
-.recommendations-poster:hover{
+.recommendations-poster:hover {
     transform: scale(1.01);
 }
 
-.user-about{
+.user-about {
     outline: var(--orange-light) solid;
     margin: 0;
     padding: 5px;
 }
-.user-dashboard{
+.user-dashboard {
+    outline: var(--orange-light) solid;
+    margin: 0;
+    padding: 5px;
+}
+
+#user-playlist {
     outline: var(--orange-light) solid;
     margin: 0;
     padding: 5px;
