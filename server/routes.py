@@ -72,12 +72,27 @@ def movie_details_route(movie_id):
     if obj == None:
         return render_template('movie_details.html',movie)
     poster_path = fetch_poster(obj.tmdb_id)
+    playlists = [
+        {
+            'name' : "ghibli",
+            'id' : 1
+        },
+        {
+            'name' : "sad romance",
+            'id' : 2
+        },
+        {
+            'name' : "thriller",
+            'id' : 3
+        }
+    ]
     return render_template('movie_details.html',**{
         'movie' : movie,
         'poster_path' : poster_path,
         'already_rated': already_rated,
         'rating' : rating,
-        'genres' :[g.title for g in movie.genres]
+        'genres' :[g.title for g in movie.genres],
+        'playlists' : playlists
     } )
 
 @app.route('/search_movies', methods=['GET','POST'])
