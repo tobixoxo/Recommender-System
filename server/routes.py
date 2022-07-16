@@ -26,6 +26,15 @@ def add_rating_to_db(user_email, rating, movie_id):
     }))
     db.session.commit()
 
+def add_playlist_to_db(user_email, playlist_name):
+    user_id = User.query.filter(User.email == user_email).first().id
+    # check if playlist with the same name exists
+    db.session.add(Playlist(**{
+        'title' : playlist_name,
+        'user_id' : user_id
+    }))
+    db.session.commit()
+    
 def get_previous_rating(user, rating, already_rated, movie_id):
     user_id = User.query.filter(User.email == user).first().id
     ratings = UserRatings.query.filter( 
@@ -119,6 +128,14 @@ def give_rating(movie_id):
     form_data = dict(request.form)
     add_rating_to_db(user, form_data['rating'], movie_id)
     return redirect(f'/movie_details/{movie_id}')
+
+@app.route('/add_playlist', methods = ['POST'])
+@jwt_required()
+def add_playlist():
+    user = get_jwt_identity()
+    form_data = dict(request.form)
+    add_playlist_to_db(user, form_data['playlist-name'])
+    return redirect('/dashboard')
 
 @app.route('/dashboard')
 @jwt_required()
