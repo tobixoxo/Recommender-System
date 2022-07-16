@@ -69,11 +69,12 @@ def view_db_route():
 @app.route('/movie_details/<int:movie_id>',methods=['POST','GET'])
 @jwt_required(optional = True)
 def movie_details_route(movie_id):
-    user = get_jwt_identity()
+    user_email = get_jwt_identity()
+    user_id = User.query.filter(User.email == user_email).first().id
     already_rated = False
     rating = None
-    if user is not None:
-        rating, already_rated = get_previous_rating(user,rating, already_rated, movie_id)
+    if user_email is not None:
+        rating, already_rated = get_previous_rating(user_email,rating, already_rated, movie_id)
     movie = Movie.query.get(movie_id)
     obj = Links.query.filter(Links.movie_id == movie_id).first()
     if obj == None:
@@ -81,17 +82,9 @@ def movie_details_route(movie_id):
     poster_path = fetch_poster(obj.tmdb_id)
     playlists = [
         {
-            'name' : "ghibli",
-            'id' : 1
-        },
-        {
-            'name' : "sad romance",
-            'id' : 2
-        },
-        {
-            'name' : "thriller",
-            'id' : 3
-        }
+            'name' : p.title,
+            'id' : p.id
+        } for p in Playlist.query.filter(Playlist.user_id == user_id)
     ]
     return render_template('movie_details.html',**{
         'movie' : movie,
